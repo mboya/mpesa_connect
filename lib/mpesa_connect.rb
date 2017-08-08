@@ -4,7 +4,7 @@ require 'redis'
 require 'httparty'
 require 'openssl'
 require 'access_token'
-# require 'security_credentials'
+require 'security_credentials'
 
 module MpesaConnect
   class Client
