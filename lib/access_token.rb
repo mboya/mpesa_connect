@@ -13,7 +13,7 @@ module MpesaConnect
     end
 
     def token_expired?
-      expire_time = @timestamp + @expires_in
+      expire_time = @timestamp.to_i + @expires_in.to_i
       return expire_time < Time.now.to_i + 58
     end
 
