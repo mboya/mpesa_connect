@@ -35,7 +35,7 @@ module MpesaConnect
         Initiator: "#{initiator}",
         SecurityCredential: "#{@sec_cred}",
         CommandID: "AccountBalance",
-        PartyA: "#{party_a}",
+        PartyA: party_a,
         IdentifierType: "4",
         Remarks: "Account Balance",
         QueueTimeOutURL: "#{@timeout}",
