@@ -4,7 +4,7 @@ require 'redis'
 require 'httparty'
 require 'openssl'
 require 'access_token'
-# require 'security_credentials'
+require 'security_credentials'
 
 module MpesaConnect
   class Client
@@ -102,19 +102,19 @@ module MpesaConnect
       JSON.parse(response.body)
     end
 
-    # def security_password security_credentials
-    #   @sec_cred = security_credentials
-    #   encrypted_security_password
-    # end
+    def security_password security_credentials
+      @sec_cred = security_credentials
+      encrypted_security_password
+    end
 
     private
       def get_token
         AccessToken.new(@key, @secret).access_token
       end
 
-      # def encrypted_security_password
-      #   password = SecurityCredentials.new(@sec_cred).encrypt_security_cred
-      # end
+      def encrypted_security_password
+        password = SecurityCredentials.new(@sec_cred).encrypt_security_cred
+      end
   
   end
 end
