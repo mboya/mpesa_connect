@@ -45,6 +45,28 @@ module MpesaConnect
       JSON.parse(response.body)
     end
 
+    def reversal initiator, transaction_id, amount, receiver_party
+      url = "#{BASE_URL}/mpesa/reversal/v1/query"
+      headers = {
+        "Authorization" => "Bearer #{get_token}",
+        "Content-Type" => "application/json"
+      }
+      body = {
+        "Initiator": "#{initiator}",
+        "SecurityCredential": "#{@sec_cred}",
+        "CommandID":"TransactionReversal",
+        "TransactionID": "#{transaction_id}",
+        "Amount": "#{amount}",
+        "ReceiverParty": "#{receiver_party}",
+        "RecieverIdentifierType":"4",
+        "ResultURL": "#{@transaction}",
+        "QueueTimeOutURL": "#{@timeout}",
+        "Remarks": "reverse transaction #{transaction_id}"
+      }.to_json
+      response = HTTParty.post(url, headers: headers, body: body)
+      JSON.parse(response.body)
+    end
+
     def transaction_status initiator, party_a, transaction_id
       url = "#{BASE_URL}/mpesa/transactionstatus/v1/query"
       headers = {
