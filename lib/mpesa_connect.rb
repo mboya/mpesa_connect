@@ -46,7 +46,7 @@ module MpesaConnect
     end
 
     def reversal initiator, transaction_id, amount, receiver_party
-      url = "#{BASE_URL}/mpesa/reversal/v1/query"
+      url = "#{BASE_URL}/mpesa/reversal/v1/request"
       headers = {
         "Authorization" => "Bearer #{get_token}",
         "Content-Type" => "application/json"
