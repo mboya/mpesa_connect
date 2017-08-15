@@ -33,7 +33,7 @@ module MpesaConnect
       }
       body = {
         Initiator: "#{initiator}",
-        SecurityCredential: "#{@sec_cred}",
+        SecurityCredential: "#{encrypted_security_password}",
         CommandID: "AccountBalance",
         PartyA: party_a,
         IdentifierType: "4",
