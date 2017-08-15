@@ -9,20 +9,12 @@ module MpesaConnect
     end
 
     def encrypt_security_cred
-      binding.pry
+      byte_array = @security_cred.bytes.to_a.to_s
+      key_file = "lib/pubkey.pem"
+      public_key = File.read(key_file)
+      ssl = OpenSSL::PKey::RSA.new(public_key)
 
-      public_key_file = "lib/cert.cer"
-      # create byte array of paasword
-      byte_array = @security_cred.bytes.to_a
-      # encrypt with mpesa public key certificate
-      # Use the RSA algorithm, and use PKCS #1.5 padding (not OAEP)
-      # and add the result to the encrypted stream
-      public_key = File.read(public_key_file)
-      # public_key = OpenSSL::PKey::RSA.new(File.read(public_key_file))
-
-      # encode
-      encrypted_string = OpenSSL::PKey::RSA.new(Base64.encode64(public_key.public_encrypt(byte_array)))
-      # encrypted_string = Base64.encode64(public_key.public_encrypt(byte_array))
+      encrypted_string = Base64.encode64(ssl.public_encrypt(byte_array)).split("\n").join
     end
 
   end
