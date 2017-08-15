@@ -52,16 +52,16 @@ module MpesaConnect
         "Content-Type" => "application/json"
       }
       body = {
-        "Initiator": "#{initiator}",
-        "SecurityCredential": "#{@sec_cred}",
-        "CommandID":"TransactionReversal",
-        "TransactionID": "#{transaction_id}",
-        "Amount": "#{amount}",
-        "ReceiverParty": "#{receiver_party}",
-        "RecieverIdentifierType":"4",
-        "ResultURL": "#{@transaction}",
-        "QueueTimeOutURL": "#{@timeout}",
-        "Remarks": "reverse transaction #{transaction_id}"
+        Initiator: "#{initiator}",
+        SecurityCredential: "#{@sec_cred}",
+        CommandID:"TransactionReversal",
+        TransactionID: "#{transaction_id}",
+        Amount: "#{amount}",
+        ReceiverParty: "#{receiver_party}",
+        RecieverIdentifierType:"4",
+        ResultURL: "#{@transaction}",
+        QueueTimeOutURL: "#{@timeout}",
+        Remarks: "reverse transaction #{transaction_id}"
       }.to_json
       response = HTTParty.post(url, headers: headers, body: body)
       JSON.parse(response.body)
