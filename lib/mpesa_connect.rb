@@ -79,7 +79,7 @@ module MpesaConnect
         CommandID: "TransactionStatusQuery",
         TransactionID: "#{transaction_id}",
         PartyA: "#{party_a}",
-        IdentifierType: "1",
+        IdentifierType: "3",
         Remarks: "Transaction Status",
         QueueTimeOutURL: "#{@timeout}",
         ResultURL: "#{@transaction}"
@@ -120,6 +120,27 @@ module MpesaConnect
         BillRefNumber: "#{bill_reference}"
       }.to_json
 
+      response = HTTParty.post(url, headers: headers, body: body)
+      JSON.parse(response.body)
+    end
+
+    def b2c_transaction initiator, amount, party_a, party_b, 
+      url = "#{BASE_URL}/mpesa/b2c/v1/paymentrequest"
+      headers = {
+        "Authorization" => "Bearer #{get_token}",
+        "Content-Type" => "application/json"
+      }
+      body = {
+        InitiatorName: "#{initiator}",
+        SecurityCredential: "#{@sec_cred}",
+        CommandID: "SalaryPayment",
+        Amount: "#{amount}",
+        PartyA: "#{party_a}",
+        PartyB: "#{party_b}",
+        Remarks: "Salary Payments",
+        QueueTimeOutURL: "#{@timeout}",
+        ResultURL: "#{@transaction}"
+      }.to_json
       response = HTTParty.post(url, headers: headers, body: body)
       JSON.parse(response.body)
     end
