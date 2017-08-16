@@ -1,6 +1,7 @@
 # MpesaConnect
 
-Gem built as ruby wrapper to handle transactions with with the [Safaricom API](https://developer.safaricom.co.ke/docs)
+Gem built as ruby wrapper to handle transactions with with the [Safaricom M-Pesa APIs](https://developer.safaricom.co.ke/docs).
+You will need to have a developer Account on [Safaricom Developer] Portal to run in sandbox environments.
 
 ## Installation
 
@@ -12,11 +13,11 @@ gem 'mpesa_connect'
 
 And then execute:
 
-    `$ bundle`
+    $ bundle
 
 Or install it yourself as:
 
-    `$ gem install mpesa_connect`
+    $ gem install mpesa_connect
 
 ## Usage
 
@@ -26,8 +27,8 @@ Or install it yourself as:
 
 Values you need from your Safaricom app
 
-- `key` and `secret`: this is for the approved app
-- `security_password`: generated from the sandbox tool for encrypting Security Credential (Shortcode 1)
+- `key` and `secret`:  Credentials for and the approved app.
+- `security_password`: Generated encrypting Security Credential from the sandbox tool (Shortcode 1).
 
 ```ruby
   client = MpesaConnect::Client.new(key, secret, security_password)
@@ -35,8 +36,8 @@ Values you need from your Safaricom app
 
 Set the urls that will be used to send response back to your app
 
-- `timeout_url`: when there is a connection break.
-- `transaction_url`: when the request is successful and json response is sent to.
+- `timeout_url`    :  The callback URL that handles information of timed out transactions
+- `transaction_url`:  The callback URL that handles a successful request and handles responses.
 
 ```ruby
   client.set_urls(timeout_url, transaction_url)
@@ -44,10 +45,10 @@ Set the urls that will be used to send response back to your app
 
 For each of the functions you will need data from Test Credentials:
 
-- `initiator`: Initiator Name (Shortcode 1)
-- `party_a`: Shortcode 1
-- `party_b`: Test MSISDN
-- `receiver_party`: Shortcode 1
+- `Initiator`     : This is the credential/username used to authenticate the transaction request.
+- `PartyA`        : Short code for party initiating the transaction.
+- `PartyB`        : Organization/MSISDN(phone number) sending the transaction.
+- `Receiver_party`: Identifier types - receiver - identify an M-Pesa transaction’s receiving party as either a shortcode, a till number or a MSISDN (phone number).
 
 ### Account Balance
 
