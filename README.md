@@ -30,6 +30,11 @@ Or install it yourself as:
   client = MpesaConnect::Client.new(key, secret, security_password)
 ```
 
+set the urls that will be used to send response back to your app
+
+- timeout_url: when there is a connection break.
+- transaction_url: when the request is successful and json response is sent to.
+
 ```ruby
   client.set_urls(timeout_url, transaction_url)
 ```
