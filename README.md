@@ -22,7 +22,43 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+  require 'mpesa_connect'
+```
+
+```ruby
+  client = MpesaConnect::Client.new(key, secret, security_password)
+```
+
+```ruby
+  client.set_urls(timeout_url, transaction_url)
+```
+
+### Account Balance
+
+```ruby
+  client.account_balance(initiator, party_a)
+```
+
+### Reversal
+
+```ruby
+  client.reversal(initiator, transaction_id, amount, receiver_party)
+```
+
+### Transaction Status
+
+```ruby
+  client.transaction_status(initiator, party_a, transaction_id)
+```
+
+### B2C Transaction
+
+Salary Payment
+
+```ruby
+  client.b2c_transaction(initiator, amount, party_a, party_b)
+```
 
 ## Development
 
