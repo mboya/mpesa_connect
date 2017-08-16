@@ -7,6 +7,9 @@
 /pkg/
 /spec/reports/
 /tmp/
-
-.DS_Store
+*.bundle
+*.so
+*.o
+*.a
+.DS_Store*
 *.gem
