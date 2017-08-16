@@ -1,7 +1,7 @@
 # MpesaConnect
 
 Gem built as ruby wrapper to handle transactions with with the [Safaricom M-Pesa APIs](https://developer.safaricom.co.ke/docs).
-You will need to have a developer Account on [Safaricom Developer] Portal to run in sandbox environments.
+You will need to have a developer Account on [Safaricom Developer](https://developer.safaricom.co.ke/docs). Portal to run in sandbox environments.
 
 ## Installation
 
@@ -27,8 +27,8 @@ Or install it yourself as:
 
 Values you need from your Safaricom app
 
-- `key` and `secret`:  Credentials for and the approved app.
-- `security_password`: Generated encrypting Security Credential from the sandbox tool (Shortcode 1).
+- `key` and `secret`:  Credentials for an approved app.
+- `security_password`: Generated Encryption Security Credential from the sandbox tool (Shortcode 1).
 
 ```ruby
   client = MpesaConnect::Client.new(key, secret, security_password)
