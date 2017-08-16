@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{connect to Mpesa API}
   spec.description   = %q{connect to Mpesa API to perform available transactions}
-  spec.homepage      = ""
+  spec.homepage      = "https://mboya.github.io/mpesa_connect/"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

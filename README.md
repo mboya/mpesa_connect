@@ -22,7 +22,60 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+  require 'mpesa_connect'
+```
+
+Values you need from your Safaricom app
+
+- key and secret: this is for the approved app
+- security_password: generated from the sandbox tool for encrypting Security Credential (Shortcode 1)
+
+```ruby
+  client = MpesaConnect::Client.new(key, secret, security_password)
+```
+
+Set the urls that will be used to send response back to your app
+
+- timeout_url: when there is a connection break.
+- transaction_url: when the request is successful and json response is sent to.
+
+```ruby
+  client.set_urls(timeout_url, transaction_url)
+```
+
+For each of the functions you will need data from Test Credentials:
+
+- initiator: Initiator Name (Shortcode 1)
+- party_a: Shortcode 1
+- party_b: Test MSISDN
+- receiver_party: Shortcode 1
+
+### Account Balance
+
+```ruby
+  client.account_balance(initiator, party_a)
+```
+
+### Reversal
+
+```ruby
+  client.reversal(initiator, transaction_id, amount, receiver_party)
+```
+
+### Transaction Status
+
+```ruby
+  client.transaction_status(initiator, party_a, transaction_id)
+```
+
+### B2C Transaction
+
+Salary Payment
+
+```ruby
+  client.b2c_transaction(initiator, amount, party_a, party_b)
+```
 
 ## Development
 
