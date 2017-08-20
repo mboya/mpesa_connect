@@ -1,10 +1,6 @@
 require "mpesa_connect/version"
-require 'base64'
-require 'redis'
+require 'mpesa_connect/access_token'
 require 'httparty'
-require 'openssl'
-require 'access_token'
-require 'security_credentials'
 
 module MpesaConnect
   class Client
