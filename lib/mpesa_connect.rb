@@ -31,7 +31,7 @@ module MpesaConnect
         SecurityCredential: "#{@sec_cred}",
         CommandID: "AccountBalance",
         PartyA: party_a,
-        IdentifierType: "4",
+        IdentifierType: "1",
         Remarks: "Account Balance",
         QueueTimeOutURL: "#{@timeout}",
         ResultURL: "#{@transaction}"
