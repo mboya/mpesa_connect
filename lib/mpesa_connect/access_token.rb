@@ -1,3 +1,6 @@
+require 'base64'
+require 'redis'
+
 module MpesaConnect
   class AccessToken
     def initialize key, secret

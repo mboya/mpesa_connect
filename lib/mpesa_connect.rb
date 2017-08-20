@@ -1,15 +1,10 @@
 require "mpesa_connect/version"
-require 'base64'
-require 'redis'
+require 'mpesa_connect/access_token'
 require 'httparty'
-require 'openssl'
-require 'access_token'
-require 'security_credentials'
 
 module MpesaConnect
   class Client
     BASE_URL = "https://sandbox.safaricom.co.ke"
-    BALANCE_URL = "https://sandbox.safaricom.co.ke/mpesa/accountbalance/v1/query"
 
     def initialize key, secret, security_credentials
       @key = key
@@ -152,7 +147,7 @@ module MpesaConnect
 
     private
       def get_token
-        AccessToken.new(@key, @secret).access_token
+        MpesaConnect::AccessToken.new(@key, @secret).access_token
       end
 
       def encrypted_security_password

@@ -1,8 +1,7 @@
 # MpesaConnect
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mpesa_connect`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Gem built as ruby wrapper to handle transactions with with the [Safaricom M-Pesa APIs](https://developer.safaricom.co.ke/docs).
+You will need to have a developer Account on [Safaricom Developer](https://developer.safaricom.co.ke/docs). Portal to run in sandbox environments.
 
 ## Installation
 
@@ -28,8 +27,8 @@ Or install it yourself as:
 
 Values you need from your Safaricom app
 
-- key and secret: this is for the approved app
-- security_password: generated from the sandbox tool for encrypting Security Credential (Shortcode 1)
+- `key` and `secret`:  Credentials for an approved app.
+- `security_password`: Generated Encryption Security Credential from the sandbox tool (Shortcode 1).
 
 ```ruby
   client = MpesaConnect::Client.new(key, secret, security_password)
@@ -37,8 +36,8 @@ Values you need from your Safaricom app
 
 Set the urls that will be used to send response back to your app
 
-- timeout_url: when there is a connection break.
-- transaction_url: when the request is successful and json response is sent to.
+- `timeout_url`    :  The callback URL that handles information of timed out transactions
+- `transaction_url`:  The callback URL that handles a successful request and handles responses.
 
 ```ruby
   client.set_urls(timeout_url, transaction_url)
@@ -46,10 +45,10 @@ Set the urls that will be used to send response back to your app
 
 For each of the functions you will need data from Test Credentials:
 
-- initiator: Initiator Name (Shortcode 1)
-- party_a: Shortcode 1
-- party_b: Test MSISDN
-- receiver_party: Shortcode 1
+- `Initiator`     : This is the credential/username used to authenticate the transaction request.
+- `PartyA`        : Short code for party initiating the transaction.
+- `PartyB`        : Organization/MSISDN(phone number) sending the transaction.
+- `Receiver_party`: Identifier types - receiver - identify an M-Pesa transaction’s receiving party as either a shortcode, a till number or a MSISDN (phone number).
 
 ### Account Balance
 
@@ -85,7 +84,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/mpesa_connect. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/mboya/mpesa_connect. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -93,4 +92,4 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 ## Code of Conduct
 
-Everyone interacting in the MpesaConnect project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/mpesa_connect/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the MpesaConnect project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/mboya/mpesa_connect/blob/master/CODE_OF_CONDUCT.md).
