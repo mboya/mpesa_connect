@@ -5,7 +5,6 @@ require 'httparty'
 module MpesaConnect
   class Client
     BASE_URL = "https://sandbox.safaricom.co.ke"
-    BALANCE_URL = "https://sandbox.safaricom.co.ke/mpesa/accountbalance/v1/query"
 
     def initialize key, secret, security_credentials
       @key = key
@@ -148,7 +147,7 @@ module MpesaConnect
 
     private
       def get_token
-        AccessToken.new(@key, @secret).access_token
+        MpesaConnect::AccessToken.new(@key, @secret).access_token
       end
 
       def encrypted_security_password
