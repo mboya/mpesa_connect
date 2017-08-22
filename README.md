@@ -82,7 +82,7 @@ first you need to setup the following
 
 - `ConfirmationURL`  : Validation URL for the client
 - `ValidationURL`    : Confirmation URL for the client
-- `ResponseType`     : Cancelled | Completed
+- `ResponseType`     : Cancelled or Completed
 - `ShortCode`        : The short code of the organization. 
 
 
