@@ -76,6 +76,33 @@ Salary Payment
   client.b2c_transaction(initiator, amount, party_a, party_b)
 ```
 
+### C2B Transaction
+
+first you need to setup the following
+
+- `ConfirmationURL`  : Validation URL for the client
+- `ValidationURL`    : Confirmation URL for the client
+- `ResponseType`     : Cancelled | Completed
+- `ShortCode`        : The short code of the organization. 
+
+
+setup the required urls
+```ruby
+  client.set_urls(nil, nil, confirmation_url, validation_url)
+```
+
+Register URL
+
+```ruby
+  client.c2b_register_url(shortcode, response_type)
+```
+
+Simulate Transaction
+
+```ruby
+  client.c2b_transaction(shortcode, amount, msisdn, bill_reference)
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
